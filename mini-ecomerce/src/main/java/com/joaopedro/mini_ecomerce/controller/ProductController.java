@@ -1,4 +1,10 @@
 
+
+// recebe e responde a requisições HTTP relacionadas a produtos,.
+
+
+
+
 package com.joaopedro.mini_ecomerce.controller;
 
 import com.joaopedro.mini_ecomerce.model.Product;
@@ -21,9 +27,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+//@RestController e uma anotacao Anotações são metadados que podem ser associados a classes, métodos, parâmetros e outros elementos do código.Elas fornecem informações que ferramentas, bibliotecas e frameworks podem interpretar.
+
 @RestController
+
 @CrossOrigin(origins = "http://127.0.0.1:5500")
+
 @RequestMapping("/api/products")
+
 public class ProductController {
 
     private final ProductRepository productRepository;
@@ -31,6 +42,9 @@ public class ProductController {
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
+
+
 
     @GetMapping
     public List<Product> getAllProducts() {
@@ -43,6 +57,9 @@ public class ProductController {
 
         return products;
     }
+
+
+
 
     @PostMapping
     public ResponseEntity<Void> createProduct(@RequestBody CreateProductRequest request) {
@@ -57,6 +74,8 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
 
@@ -68,6 +87,8 @@ public class ProductController {
 
         return ResponseEntity.noContent().build();
     }
+
+
 
     @GetMapping("/database")
     public String getDatabasePath() {
